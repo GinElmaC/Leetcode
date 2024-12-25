@@ -1,11 +1,12 @@
 package D20241224;
 
+import java.time.ZonedDateTime;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int[] nums = {100,4,200,3,1,2};
-        System.out.println(longestConsecutive(nums));
+        ZonedDateTime zbj = ZonedDateTime.now();
+        System.out.println(zbj);
     }
     //哈希3
     public static int longestConsecutive(int[] nums) {
