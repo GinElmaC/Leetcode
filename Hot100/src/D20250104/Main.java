@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int[] n = {1,2,3,1};
-        System.out.println(rob(n));
+        String str = ")()())";
+        System.out.println(longestValidParentheses(str));
     }
     //leetcode54中等-螺旋矩阵
     public static List<Integer> spiralOrder(int[][] matrix) {
@@ -376,5 +376,21 @@ public class Main {
             dp[i] = Math.max(dp[i-1],dp[i-2]+nums[i]);
         }
         return dp[n-1];
+    }
+    //leetcode32困难-最长有效括号
+    public static int longestValidParentheses(String s) {
+        //动态规划
+        int n = s.length();
+        int[] dp = new int[n+1];
+        int res = 0;
+        for(int i = 0;i<n;i++){
+            if(s.charAt(i) == ')'){
+                if(i-1-dp[i]>=0&&s.charAt(i-1-dp[i])=='('){
+                    dp[i+1] = dp[i]+2+dp[i-1-dp[i]];
+                }
+            }
+            res = Math.max(res,dp[i+1]);
+        }
+        return res;
     }
 }
