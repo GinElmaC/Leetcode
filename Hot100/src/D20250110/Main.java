@@ -60,4 +60,31 @@ public class Main {
         }
         return dp[sum] == sum;
     }
+    //leetcode115困难-不同的子序列
+    public static int numDistinct(String s, String t) {
+        int n1 = s.length();
+        int n2 = t.length();
+        int[] has = new int[26];
+        int[] cns = new int[26];
+        for(int i = 0;i<n2;i++){
+            cns[t.charAt(i)-'a']++;
+        }
+        long res = 0;
+        for(int i = 0;i<n1;i++){
+            has[s.charAt(i)-'a']++;
+            if(check115(has,cns)){
+                res++;
+            }
+        }
+        long s1 = (long)Math.pow(10,9)+7;
+        return (int)(res%s1);
+    }
+    public static boolean check115(int[] has,int[] cns){
+        for(int i = 0;i<26;i++){
+            if(has[i]<cns[i]){
+                return false;
+            }
+        }
+        return true;
+    }
 }
