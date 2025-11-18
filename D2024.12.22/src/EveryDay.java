@@ -42,4 +42,22 @@ public class EveryDay {
         }
         return count;
     }
+    //717
+    public static boolean isOneBitCharacter(int[] bits) {
+        int n = bits.length;
+        int i = 0;
+        while(true){
+            if(i == n){
+                return false;
+            }
+            if(i == n-1){
+                return true;
+            }
+            if(bits[i] == 1){
+                i+=2;
+            }else{
+                i++;
+            }
+        }
+    }
 }
